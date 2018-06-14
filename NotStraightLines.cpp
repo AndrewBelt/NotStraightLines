@@ -5,7 +5,7 @@ using namespace rack;
 Plugin *plugin;
 
 static const int NUM_LINES = 60;
-static const int NUM_POINTS = 64;
+static const int NUM_POINTS = 128;
 
 struct NotStraightLines : Module {
 	enum ParamIds {
@@ -70,8 +70,9 @@ struct ScopeWidget : TransparentWidget {
 					nvgLineTo(vg, p.x, p.y);
 			}
 		}
-		nvgStrokeWidth(vg, 1.0);
-		nvgStrokeColor(vg, nvgRGBA(100, 100, 100, 0xff));
+		nvgLineCap(vg, NVG_ROUND);
+		nvgStrokeWidth(vg, 0.5);
+		nvgStrokeColor(vg, nvgRGBA(80, 80, 80, 0xff));
 		nvgStroke(vg);
 
 		Widget::draw(vg);
